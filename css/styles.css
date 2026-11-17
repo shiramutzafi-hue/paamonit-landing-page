@@ -1,0 +1,554 @@
+/* =========================================================
+   פעמונית – דף נחיתה
+   צבעים חמים ורגועים. כדי לשנות צבעים: לערוך רק את :root
+   ========================================================= */
+
+:root {
+  /* רקעים */
+  --bg: #FBF7F1;          /* שמנת */
+  --surface: #F4EBDF;     /* חול בהיר */
+  --surface-2: #EDE0CE;   /* חול */
+  --line: #E2D1BB;        /* קווים ומסגרות */
+
+  /* טקסט */
+  --ink: #3A2A20;         /* חום קפה כהה */
+  --ink-soft: #6B584A;    /* חום רך */
+
+  /* הדגשה */
+  --accent: #A85A32;      /* נחושת */
+  --accent-dark: #8B4927;
+  --brass: #C49A4E;       /* פליז – לקישוט בלבד */
+
+  --footer-bg: #2E2119;
+  --cream: #FFFDF9;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 12px 32px rgba(58, 42, 32, 0.08);
+  --container: 1180px;
+
+  --font: "Assistant", "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- בסיס ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.6em; }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 700; }
+h3 { font-size: 1.4rem; font-weight: 700; }
+p { margin: 0 0 1em; }
+
+.icon { width: 1.25em; height: 1.25em; flex-shrink: 0; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 40px);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  right: 16px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  z-index: 100;
+}
+.skip-link:focus { top: 12px; }
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* ---------- כפתורים ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0.7em 1.6em;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-dark); }
+
+.btn-ghost { border-color: rgba(255, 253, 249, 0.85); color: var(--cream); background: transparent; }
+.btn-ghost:hover { background: rgba(255, 253, 249, 0.14); }
+
+.btn-sm { min-height: 42px; padding: 0.45em 1.1em; font-size: 0.98rem; }
+.btn-block { width: 100%; }
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: color .25s;
+}
+.brand-text small {
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+/* ---------- באנר עליון ---------- */
+.hero {
+  position: relative;
+  min-height: min(86vh, 820px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ink);
+}
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 42% 32%;
+  z-index: -2;
+  /* מסתיר פס כהה דק בראש התמונה הנוכחית (צילום מסך). אפשר למחוק כשתהיה תמונה מקורית */
+  transform: scale(1.05);
+  transform-origin: 50% 100%;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* כהה מימין (שם הטקסט) ושקוף משמאל (שם ריטה וניסים) */
+  background: linear-gradient(to left,
+    rgba(38, 25, 17, 0.86) 0%,
+    rgba(38, 25, 17, 0.62) 30%,
+    rgba(38, 25, 17, 0.10) 58%,
+    rgba(38, 25, 17, 0) 75%);
+}
+.hero-content {
+  color: var(--cream);
+  padding-block: 64px;
+}
+.hero-content > * { max-width: 30rem; }
+.hero-text { width: fit-content; }
+
+.eyebrow {
+  margin: 0 0 0.6em;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--brass);
+}
+.eyebrow-dark { color: var(--accent); }
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.4rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.divider {
+  display: block;
+  width: 140px;
+  height: 3px;
+  margin: 18px 0 22px;
+  background: var(--brass);
+  border-radius: 3px;
+}
+.hero-lead {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.hero-title { width: fit-content; }
+.hero-sign {
+  margin: 0.1em 0 0;
+  line-height: 1.3;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  color: #F1DDBF;
+}
+
+/* ---------- סקשנים ---------- */
+.section { padding-block: clamp(64px, 9vw, 112px); }
+.section-alt { background: var(--surface); }
+
+.section-head {
+  max-width: 40rem;
+  margin: 0 auto clamp(32px, 5vw, 56px);
+  text-align: center;
+}
+.section-head p:last-child { color: var(--ink-soft); margin-bottom: 0; }
+
+/* טקסט + תמונה זה לצד זה */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+.split-text p { color: var(--ink-soft); }
+.split-text h2 { color: var(--ink); }
+.split-media { margin: 0; }
+.split-media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- מקומות לתמונות (זמני) ---------- */
+.ph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  color: var(--ink-soft);
+  background:
+    repeating-linear-gradient(135deg, rgba(196, 154, 78, 0.07) 0 14px, transparent 14px 28px),
+    var(--surface-2);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+}
+.ph .icon { width: 44px; height: 44px; color: var(--brass); }
+.ph span { font-weight: 600; }
+.ph code {
+  font-size: 0.85rem;
+  direction: ltr;
+  background: rgba(255, 253, 249, 0.7);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.ph-portrait { aspect-ratio: 4 / 5; }
+.ph-wide { aspect-ratio: 4 / 3; }
+.ph-card { aspect-ratio: 4 / 3; border-radius: 0; border-width: 0 0 2px; }
+.section-alt .ph { background:
+    repeating-linear-gradient(135deg, rgba(196, 154, 78, 0.08) 0 14px, transparent 14px 28px),
+    var(--bg); }
+
+.play-badge {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.play-badge .icon { width: 28px; height: 28px; color: #fff; margin-inline-start: 4px; }
+
+/* ---------- תמונה + סרטון ---------- */
+.media-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 32px);
+}
+.media-card { margin: 0; }
+.media-card img,
+.media-card video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--ink);
+}
+.media-card figcaption {
+  margin-top: 12px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+/* ---------- רשימת ייחודיות ---------- */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  display: grid;
+  gap: 20px;
+}
+.features li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.feature-icon .icon { width: 24px; height: 24px; }
+.features strong { display: block; font-size: 1.15rem; }
+.features span { color: var(--ink-soft); }
+
+/* ---------- כרטיסי קטגוריות ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 32px);
+}
+.card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  transition: transform .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(58, 42, 32, 0.12); }
+.card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.card-body { padding: 22px 24px 26px; }
+.card-body h3 { color: var(--accent); margin-bottom: 0.35em; }
+.card-body p { color: var(--ink-soft); margin: 0; }
+
+.cards-note {
+  text-align: center;
+  margin: clamp(28px, 4vw, 44px) 0 0;
+  font-weight: 600;
+}
+.cards-note a { font-weight: 700; }
+
+/* ---------- צור קשר ---------- */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+.contact-info > p { color: var(--ink-soft); }
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 32px;
+  display: grid;
+  gap: 14px;
+}
+.contact-list a,
+.contact-plain {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+.contact-list a:hover { color: var(--accent); }
+.contact-list .icon {
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.social { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.social p { margin: 0; font-weight: 700; margin-inline-end: 4px; }
+.social-btn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--accent);
+  background: var(--cream);
+  transition: background-color .2s, color .2s;
+}
+.social-btn:hover { background: var(--accent); color: #fff; }
+.social-btn .icon { width: 22px; height: 22px; }
+
+.contact-form {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 4vw, 40px);
+}
+.field { margin-bottom: 18px; }
+.field label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input[dir="ltr"] { text-align: right; }
+.field textarea { resize: vertical; min-height: 120px; }
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(168, 90, 50, 0.18);
+}
+.hidden-field { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.form-note { margin: 12px 0 0; font-size: 0.95rem; color: var(--ink-soft); text-align: center; }
+.form-status { margin: 10px 0 0; font-weight: 600; color: var(--accent-dark); text-align: center; }
+.form-status:empty { display: none; }
+
+/* ---------- תחתית ---------- */
+.site-footer {
+  background: var(--footer-bg);
+  color: #E9DCCB;
+  padding-top: 56px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(233, 220, 203, 0.16);
+}
+.site-footer .brand-text { color: var(--cream); }
+.site-footer .brand-text small { color: #C9B7A2; }
+.footer-brand p { margin: 12px 0 0; color: #C9B7A2; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.footer-nav a { color: #E9DCCB; text-decoration: none; }
+.footer-nav a:hover { color: var(--brass); }
+.footer-social { display: flex; gap: 10px; }
+.site-footer .social-btn { background: transparent; border-color: rgba(233, 220, 203, 0.3); color: #E9DCCB; }
+.site-footer .social-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.copyright {
+  margin: 0;
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: #B8A591;
+}
+
+/* ---------- וואטסאפ צף ---------- */
+.wa-float {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(58, 42, 32, 0.28);
+  transition: background-color .2s, transform .2s;
+}
+.wa-float:hover { background: var(--accent-dark); transform: scale(1.05); }
+.wa-float .icon { width: 28px; height: 28px; }
+
+/* =========================================================
+   טאבלט ומטה
+   ========================================================= */
+@media (max-width: 900px) {
+  /* טאבלט ונייד: התמונה למעלה (בלי טקסט על הפנים), הטקסט מתחתיה על רקע כהה */
+  .hero {
+    display: block;
+    min-height: 0;
+    background: #261911;
+  }
+  .hero-img {
+    position: relative;
+    z-index: 0;
+    aspect-ratio: 4 / 3;
+    max-height: 64svh;
+    object-position: 47% 30%;
+  }
+  .hero-overlay { display: none; }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    margin-top: -72px;
+    padding-block: 64px 44px;
+    background: linear-gradient(to bottom, rgba(38, 25, 17, 0) 0, #261911 72px);
+  }
+  .hero-content > * { max-width: 36rem; }
+
+  .split,
+  .contact { grid-template-columns: 1fr; }
+  .split-media { order: -1; } /* בנייד: תמונה קודם, אחריה טקסט */
+  .split-media .ph-portrait,
+  .split-media img { aspect-ratio: 4 / 3; }
+
+  .card-body { padding: 18px 18px 22px; }
+
+  .footer-inner { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .footer-nav { justify-content: center; }
+}
+
+/* =========================================================
+   נייד
+   ========================================================= */
+@media (max-width: 640px) {
+  body { font-size: 1.06rem; }
+
+  .hero-img { aspect-ratio: 4 / 5; }
+
+  .media-duo { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+
+  .wa-float { left: 16px; bottom: 16px; width: 54px; height: 54px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}

@@ -1,0 +1,10 @@
+# מערכת הפעלה
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# עורך
+.vscode/
+
+# Claude Code (הגדרות מקומיות)
+.claude/
