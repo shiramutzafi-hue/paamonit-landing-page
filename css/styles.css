@@ -7,8 +7,8 @@
 :root {
   /* רקעים */
   --bg: #E8F3F1;          /* טורקיז בהיר */
-  --surface: #CDE5E1;     /* טורקיז כהה יותר */
-  --surface-2: #C1DDD8;   /* טורקיז למקומות התמונות */
+  --surface: #B8DAD5;     /* טורקיז עמוק יותר */
+  --surface-2: #AAD1CB;   /* טורקיז למקומות התמונות */
   --line: #BCD3CE;        /* קווים ומסגרות */
 
   /* טקסט */
@@ -129,7 +129,7 @@ p { margin: 0 0 1em; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 42% 32%;
+  object-position: 42% 55%;   /* מאוזן: גם הראשים וגם החיבוק */
   z-index: -2;
   /* מסתיר פס כהה דק בראש התמונה הנוכחית (צילום מסך). אפשר למחוק כשתהיה תמונה מקורית */
   transform: scale(1.05);
@@ -400,11 +400,27 @@ p { margin: 0 0 1em; }
 /* ימין: כותרת וטופס | שמאל: פרטי קשר ורשתות */
 .contact {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(40px, 7vw, 96px);
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
   align-items: center;
 }
-.contact-main h2 { font-size: clamp(2.4rem, 4.4vw, 3.4rem); }
+/* הלוגו מימין לכותרת ולשורת ההסבר, שמיושרות על אותו קו */
+.contact-title-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 1.2em;
+}
+.contact-title-text .contact-intro { margin: 6px 0 0; font-size: 1.1rem; }
+.contact-logo {
+  height: clamp(96px, 9vw, 128px);
+  width: auto;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 16px rgba(58, 42, 32, 0.1);
+  flex-shrink: 0;
+}
+.contact-main h2 { font-size: clamp(2.4rem, 4.4vw, 3.4rem); margin: 0; }
 .contact-intro {
   color: var(--ink-soft);
   font-size: 1.2rem;
@@ -482,9 +498,9 @@ p { margin: 0 0 1em; }
 .field textarea {
   resize: vertical;
   min-height: 110px;
-  border-color: #D9C7B0;
+  border-color: rgba(31, 110, 120, 0.16);
   border-bottom-color: #75624F;
-  background: rgba(255, 253, 249, 0.7);
+  background: rgba(255, 255, 255, 0.25);
 }
 /* בזמן כתיבה כל שדה מקבל מסגרת */
 .field input:focus,
@@ -558,6 +574,10 @@ p { margin: 0 0 1em; }
   .hero-lead .sep, .hero-sub .sep { margin-inline: 0.3em; }
 
   .cards { grid-template-columns: 1fr; }
+
+  .contact-title-row { gap: 14px; align-items: flex-start; }
+  .contact-logo { height: 84px; }
+  .contact-main h2 { font-size: 2.1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

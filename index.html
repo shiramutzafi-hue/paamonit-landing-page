@@ -87,7 +87,8 @@
           <p class="hero-sub"><span class="nw">מוצרים בעבודת יד</span> <span class="sep" aria-hidden="true">|</span> <span class="nw">אילת</span></p>
           <div class="hero-ornament" aria-hidden="true">
             <span class="orn-line"></span>
-            <svg viewBox="0 0 40 26" width="34" height="22"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 3c3.6 5 3.6 13 0 19-3.6-6-3.6-14 0-19z"/><path d="M20 22c-6-1.5-11-6.5-13-13 6 .8 10.5 5.5 13 13z"/><path d="M20 22c6-1.5 11-6.5 13-13-6 .8-10.5 5.5-13 13z"/><path d="M12 24h16"/></g></svg>
+            <!-- חמסה -->
+            <svg viewBox="0 0 32 36" width="28" height="32"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M16 33C11 32 8 28 8 23C6 22 4.5 19.5 4.5 16.5C4.5 14.5 6.5 14 7.5 15.5L9 18V7.5C9 5.5 12.5 5.5 12.5 7.5V15L13.5 15V4.5C13.5 2.5 18.5 2.5 18.5 4.5V15L19.5 15V7.5C19.5 5.5 23 5.5 23 7.5V18L24.5 15.5C25.5 14 27.5 14.5 27.5 16.5C27.5 19.5 26 22 24 23C24 28 21 32 16 33Z"/><path d="M11.8 24Q16 20 20.2 24Q16 28 11.8 24Z"/></g><circle cx="16" cy="24" r="1.3" fill="currentColor"/></svg>
             <span class="orn-line"></span>
           </div>
         </div>
@@ -106,7 +107,9 @@
 
         <figure class="split-media split-video">
           <!-- סרטון אנכי עם קול. לא מתנגן לבד; לוחצים Play -->
-          <video controls playsinline preload="metadata" width="478" height="850"
+          <!-- poster: התמונה שמוצגת עד שלוחצים Play -->
+          <video controls playsinline preload="none" width="478" height="850"
+                 poster="images/video-poster.jpg"
                  aria-label="סרטון: הבית של ריטה וניסים והצליל של פעמוני הרוח">
             <source src="video/videochimes.mp4#t=0.1" type="video/mp4">
           </video>
@@ -143,11 +146,11 @@
           <ul class="features">
             <li>
               <span class="feature-icon"><svg class="icon"><use href="#i-hand"/></svg></span>
-              <div><strong>יצירה עם נשמה</strong><span>כל המוצרים נוצרים אצלנו בבית באילת, מתוך אהבה אמיתית ליצירה.</span></div>
+              <div><strong>יצירה עם נשמה</strong><span>כל המוצרים נוצרים אצלנו בבית באילת בעבודת יד, מתוך אהבה אמיתית ליצירה.</span></div>
             </li>
             <li>
               <span class="feature-icon"><svg class="icon"><use href="#i-leaf"/></svg></span>
-              <div><strong>יצירה מקיימת</strong><span>אנחנו יוצרים מחומרים ממוחזרים ומעניקים להם חיים חדשים, מתוך אהבה לסביבה ואמונה בצריכה מקיימת.</span></div>
+              <div><strong>יצירה מקיימת</strong><span>את חלק מהמוצרים שלנו אנחנו יוצרים מחומרים ממוחזרים שאנחנו מעניקים להם חיים חדשים.</span></div>
             </li>
             <li>
               <span class="feature-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
@@ -157,12 +160,9 @@
         </div>
 
         <figure class="split-media">
-          <!-- להחליף ב: <img src="images/handmade.jpg" alt="ניסים עובד על פעמון רוח" loading="lazy"> -->
-          <div class="ph ph-portrait" role="img" aria-label="מקום לתמונה">
-            <svg class="icon"><use href="#i-image"/></svg>
-            <span>תמונה: תהליך היצירה / פריט מקרוב</span>
-            <code>images/handmade.jpg</code>
-          </div>
+          <img src="images/handmade.jpg" width="1324" height="1188" loading="lazy"
+               alt="גופי תאורה בעבודת יד תלויים על מוט, עם חרוזים צבעוניים ואור חם">
+
         </figure>
       </div>
     </section>
@@ -193,7 +193,7 @@
             </div>
             <div class="card-body">
               <h3>גופי תאורה</h3>
-              <p>מנורות ואהילים בשילוב חרוזים ייחודיים, שמפיצים אור חם ואווירה רומנטית.</p>
+              <p>מנורות ואהילים אוריינטליים בשילוב חרוזים ייחודיים, שמפיצים אור חם ואווירה רומנטית.</p>
             </div>
           </article>
 
@@ -204,7 +204,7 @@
             </div>
             <div class="card-body">
               <h3>תכשיטים</h3>
-              <p>עגילים, שרשראות ושרשראות בטן צבעוניות, כל אחד בעיצוב משלו.</p>
+              <p>מגוון רחב של עגילים, מקלאסיים ועדינים ועד צבעוניים בסגנון אתני, בגדלים שונים. לצדם שרשראות ושרשראות בטן, וכל תכשיט ייחודי במינו.</p>
             </div>
           </article>
         </div>
@@ -216,8 +216,14 @@
       <div class="container contact">
         <!-- ימין: כותרת + טופס -->
         <div class="contact-main">
-          <h2>צרו קשר</h2>
-          <p class="contact-intro">רוצים לשאול על פריט, לתאם משלוח או להזמין אותנו לאירוע?<br>השאירו פרטים ונחזור אליכם בהקדם.</p>
+          <div class="contact-title-row">
+            <img class="contact-logo" src="images/logo.webp" width="856" height="637" loading="lazy"
+                 alt="הלוגו של פעמונית: יצירה עם נשמה, אילת">
+            <div class="contact-title-text">
+              <h2>צרו קשר</h2>
+              <p class="contact-intro">רוצים לשאול על פריט, לתאם משלוח או להזמין אותנו לאירוע? השאירו פרטים ונחזור אליכם בהקדם.</p>
+            </div>
+          </div>
 
           <!-- הטופס מוכן ל-Netlify Forms. אחרי שהאתר יעלה ל-Netlify והמייל יוגדר שם:
                לשנות data-ready="false" ל- data-ready="true" -->
@@ -256,13 +262,13 @@
                 <svg class="icon"><use href="#i-whatsapp"/></svg><span>וואטסאפ</span>
               </a>
             </li>
-            <li class="c-amber">
+            <li class="c-teal">
               <a href="tel:+972522620010"><svg class="icon"><use href="#i-phone"/></svg><span dir="ltr">052-2620010</span></a>
             </li>
             <li class="c-teal">
               <a href="mailto:ritasmadja@gmail.com"><svg class="icon"><use href="#i-mail"/></svg><span dir="ltr">ritasmadja@gmail.com</span></a>
             </li>
-            <li class="c-magenta">
+            <li class="c-teal">
               <span class="contact-plain"><svg class="icon"><use href="#i-pin"/></svg><span>אילת</span></span>
             </li>
           </ul>

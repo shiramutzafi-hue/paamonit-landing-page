@@ -36,7 +36,7 @@ video/            סרטונים
 |---|---|
 | `images/story.jpg` | הסיפור שלנו, חלק ב |
 | ✅ `video/videochimes.mp4` | הסיפור שלנו, חלק א (סרטון, הוכנס) |
-| `images/handmade.jpg` | כל פריט יחיד במינו |
+| ✅ `images/handmade.jpg` | כל פריט יחיד במינו (הוכנס) |
 | ~~`images/cat-chimes.jpg`~~ ✅ `images/cat-chimes.webp` | כרטיס פעמוני רוח (הוכנס) |
 | ✅ `images/cat-lamps.webp` | כרטיס גופי תאורה (הוכנס) |
 | ✅ `images/cat-jewelry.jpg` | כרטיס תכשיטים (הוכנס) |
