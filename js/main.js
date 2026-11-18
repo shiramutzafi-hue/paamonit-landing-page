@@ -1,6 +1,6 @@
-// פעמונית – סקריפט קטן: הודעת טופס ושנה בתחתית
+// פעמונית – סקריפט קטן: הודעת טופס
 
-// טופס: עד שהטופס יחובר (data-ready="true" ב-index.html) מציגים הודעה במקום לשלוח
+// עד שהטופס יחובר (data-ready="true" ב-index.html) מציגים הודעה במקום לשלוח
 const form = document.getElementById('contact-form');
 
 if (form) {
@@ -14,7 +14,3 @@ if (form) {
     }
   });
 }
-
-// שנה נוכחית בתחתית
-const year = document.getElementById('year');
-if (year) year.textContent = new Date().getFullYear();
