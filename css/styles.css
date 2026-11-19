@@ -421,6 +421,7 @@ p { margin: 0 0 1em; }
   flex-shrink: 0;
 }
 .contact-main h2 { font-size: clamp(2.4rem, 4.4vw, 3.4rem); margin: 0; }
+.contact-logo-mobile { display: none; }
 .contact-intro {
   color: var(--ink-soft);
   font-size: 1.2rem;
@@ -556,7 +557,8 @@ p { margin: 0 0 1em; }
   .split,
   .contact { grid-template-columns: 1fr; }
   .contact-details { padding-top: 0; }
-  .split-media { order: -1; } /* בנייד: תמונה קודם, אחריה טקסט */
+  /* בנייד: קודם הטקסט ואחריו התמונה או הסרטון */
+  .split-media { order: 1; }
   .split-media .ph-portrait,
   .split-media img { aspect-ratio: 4 / 3; }
 
@@ -574,6 +576,28 @@ p { margin: 0 0 1em; }
   .hero-lead .sep, .hero-sub .sep { margin-inline: 0.3em; }
 
   .cards { grid-template-columns: 1fr; }
+  /* כרטיסי המוצרים בנייד: קטנים יותר וממורכזים */
+  .card { width: 100%; max-width: 290px; margin-inline: auto; }
+  .card-media { padding: 10px; }
+  .card-body { padding: 16px 18px 20px; }
+  .card-body p { font-size: 1rem; }
+  /* פרטי הקשר בנייד: קטנים יותר */
+  .contact-list { gap: 8px; margin-bottom: 28px; }
+  .contact-list a,
+  .contact-plain { font-size: 1rem; gap: 10px; min-height: 40px; }
+  .contact-list .icon { width: 36px; height: 36px; padding: 9px; }
+  .social p { font-size: 0.95rem; }
+  .social-btn { width: 40px; height: 40px; }
+  .social-btn .icon { width: 19px; height: 19px; }
+  /* בנייד: הלוגו עובר לבין הפרטים לרשתות, והרשתות ממורכזות */
+  .contact-title-row .contact-logo { display: none; }
+  .contact-details .contact-logo-mobile { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 auto 28px; }
+  .social { width: 100%; text-align: center; }
+
+  /* הסיפור האישי בנייד: כתב קטן יותר */
+  #story .split-text p,
+  #story-2 .split-text p { font-size: 17px; line-height: 1.8; }
+  .story-title { font-size: 25px; }
 
   .contact-title-row { gap: 14px; align-items: flex-start; }
   .contact-logo { height: 84px; }
