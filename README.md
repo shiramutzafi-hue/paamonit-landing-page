@@ -34,7 +34,7 @@ video/            סרטונים
 
 | קובץ | איפה בדף |
 |---|---|
-| `images/story.jpg` | הסיפור שלנו, חלק ב |
+| ✅ `images/story.jpg` | הסיפור שלנו, חלק ב (הוכנס) |
 | ✅ `video/videochimes.mp4` | הסיפור שלנו, חלק א (סרטון, הוכנס) |
 | ✅ `images/handmade.jpg` | כל פריט יחיד במינו (הוכנס) |
 | ~~`images/cat-chimes.jpg`~~ ✅ `images/cat-chimes.webp` | כרטיס פעמוני רוח (הוכנס) |
