@@ -69,12 +69,8 @@
 
     <!-- ===== באנר עליון ===== -->
     <section class="hero" aria-label="פעמונית">
-      <img class="hero-img" src="images/hero-rita-nissim.webp" width="1206" height="706"
-           alt="ריטה וניסים סמדג'ה מחובקים בדוכן של פעמונית, מוקפים בפעמוני רוח, גופי תאורה ותכשיטים"
-           fetchpriority="high">
-      <div class="hero-overlay" aria-hidden="true"></div>
-
-      <div class="container hero-content">
+      <!-- צד אחד: הטקסט על רקע שחור. צד שני: התמונה המשותפת (גם היא על רקע שחור) -->
+      <div class="hero-content">
         <div class="hero-text">
           <h1>פעמונית</h1>
           <p class="hero-sign">
@@ -93,6 +89,11 @@
           </div>
         </div>
       </div>
+
+      <div class="hero-media">
+        <img class="hero-img" src="images/hero-couple.webp" width="1426" height="1103"
+             alt="ריטה וניסים סמדג'ה, בעלי פעמונית" fetchpriority="high">
+      </div>
     </section>
 
     <!-- ===== 1. הסיפור שלנו, חלק א: טקסט מימין, סרטון משמאל ===== -->
@@ -100,7 +101,7 @@
       <div class="container split">
         <div class="split-text">
           <h2 class="story-title">יוצרים חיים יחד:<br>הסיפור מאחורי פעמונית</h2>
-          <p>אנחנו ריטה וניסים סמדג'ה, זוג אילתי ותיק ובעלי העסק ״פעמונית״. נפגשנו לראשונה בשנות השבעים, כשריטה הייתה בת 16, ומשם התחילה אהבה בת שנים. ריטה, שנולדה וגדלה באילת ומגיל צעיר נמשכה לתכשיטים מיוחדים, קנתה מניסים שרשרת עם חרוזים אפריקאיים. באותם ימים ניסים נהג למכור את התכשיטים שלו בכל סוף שבוע על המדרגות של מרכז התיירות בעיר.</p>
+          <p>אנחנו ריטה וניסים סמדג'ה, זוג אילתי ובעלי העסק ״פעמונית״. נפגשנו לראשונה בשנות השבעים, כשריטה הייתה בת 16, ומשם התחילה אהבה בת שנים. ריטה, שנולדה וגדלה באילת ומגיל צעיר נמשכה לתכשיטים מיוחדים, קנתה מניסים שרשרת עם חרוזים אפריקאיים. באותם ימים ניסים נהג למכור את התכשיטים שלו בכל סוף שבוע על המדרגות של מרכז התיירות בעיר.</p>
           <p>אחרי השחרור מהצבא ריטה ניהלה חנות לעבודות יד בחאן האילתי, ותוך שבוע התכשיטים של ניסים כבר הוצגו בחלון הראווה. ניסים הגיע כמעט כל יום לבדוק מה נמכר, החיבור בינינו הלך וגבר, ומאז אנחנו יחד, כבר קרוב לארבעים שנה.</p>
           <p>יחד פתחנו את ״סינדרלה״, חנות קטנה במרכז התיירות באילת, עם תכשיטים ובגדים שריטה צבעה ותפרה בעצמה. בהמשך עברנו לתל אביב ופתחנו חנות ברחוב דיזנגוף פינת גורדון. שם נולדו הילדים שלנו, ולקוחות הגיעו אלינו מהצפון הרחוק ועד הקיבוצים בדרום.</p>
         </div>
@@ -121,8 +122,8 @@
     <section class="section section-alt" id="story-2">
       <div class="container split">
         <figure class="split-media">
-          <img src="images/story.jpg" width="900" height="1457" loading="lazy"
-               alt="דוכן של פעמונית: שולחן סגול עם שרשראות, תכשיטים ומעמדי עגילים, ופעמוני רוח תלויים מעל">
+          <img src="images/story.jpg" width="853" height="1600" loading="lazy"
+               alt="דוכן של פעמונית: פעמוני רוח מנחושת ופליז תלויים מעל שולחן עם עגילים, טבעות ושרשראות">
 
         </figure>
 
@@ -147,11 +148,11 @@
             </li>
             <li>
               <span class="feature-icon"><svg class="icon"><use href="#i-leaf"/></svg></span>
-              <div><strong>יצירה מקיימת</strong><span>את חלק מהמוצרים שלנו אנחנו יוצרים מחומרים ממוחזרים שאנחנו מעניקים להם חיים חדשים.</span></div>
+              <div><strong>יצירה שמתכתבת עם הטבע</strong><span>את חלק מהמוצרים שלנו אנחנו יוצרים מחומרים ממוחזרים שאנחנו מעניקים להם חיים חדשים.</span></div>
             </li>
             <li>
               <span class="feature-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
-              <div><strong>עמידות לאורך שנים</strong><span>המוצרים מיוצרים מחומרים עמידים. פעמוני הרוח מחזיקים מעמד גם בחוץ, ומתאימים לתלייה במרפסת ובגינה.</span></div>
+              <div><strong>ייחודיות וצבע בכל מוצר</strong><span>כל פריט מיוצר בעבודת יד מא׳ ועד ת׳ ומשלב אלמנטים בצבעים שונים ומגוונים ובהשראה אתנית, כך שאין שני מוצרים זהים. המוצרים עשויים מחומרים עמידים, ופעמוני הרוח מתאימים גם לתלייה במרפסת ובגינה.</span></div>
             </li>
           </ul>
         </div>
@@ -189,7 +190,7 @@
                    alt="מנורה תלויה בסגנון אוריינטלי בעבודת יד: אהיל כהה מחורר עם אבנים בכתום ושרשראות של חרוזים בגוני ענבר, פנינה ועץ">
             </div>
             <div class="card-body">
-              <h3>גופי תאורה</h3>
+              <h3>גופי תאורה אוריינטליים</h3>
               <p>מנורות ואהילים אוריינטליים בשילוב חרוזים ייחודיים, שמפיצים אור חם ואווירה רומנטית.</p>
             </div>
           </article>
@@ -246,7 +247,7 @@
               <textarea id="f-message" name="message" rows="3" placeholder="במה נוכל לעזור?"></textarea>
             </div>
 
-            <button class="btn btn-primary btn-block btn-square" type="submit">כתבו לנו</button>
+            <button class="btn btn-primary btn-block btn-square" type="submit">שלחו</button>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -266,7 +267,7 @@
               <a href="mailto:ritasmadja@gmail.com"><svg class="icon"><use href="#i-mail"/></svg><span dir="ltr">ritasmadja@gmail.com</span></a>
             </li>
             <li class="c-teal">
-              <span class="contact-plain"><svg class="icon"><use href="#i-pin"/></svg><span>אילת</span></span>
+              <span class="contact-plain"><svg class="icon"><use href="#i-pin"/></svg><span>נשמח לארח אתכם בביתנו באילת בתיאום מראש</span></span>
             </li>
           </ul>
 

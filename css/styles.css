@@ -114,46 +114,78 @@ p { margin: 0 0 1em; }
 .btn-block { width: 100%; }
 
 /* ---------- באנר עליון ---------- */
+/* שני חצאים: הטקסט מימין, התמונה המשותפת (בלי רקע) משמאל.
+   רקע טורקיז: כהה מאחורי הטקסט ובהיר יותר מאחורי התמונה, עם קווי זהב עדינים */
 .hero {
   position: relative;
-  min-height: min(66vh, 600px);   /* באנר צר יותר */
-  display: flex;
-  align-items: center;
-  overflow: hidden;
   isolation: isolate;
-  background: var(--hero-dark);
+  display: grid;
+  /* הטקסט והתמונה צמודים זה לזה במרכז הבאנר, והשוליים משני הצדדים גמישים */
+  grid-template-columns: 1fr auto auto 1fr;
+  --wave-h: clamp(34px, 5vw, 76px);    /* גובה הגל בתחתית */
+  height: calc(clamp(380px, 52vh, 480px) + var(--wave-h));   /* באנר צר, ועוד מקום לגל */
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 45% 85% at 25% 55%, rgba(120, 214, 210, 0.55), transparent 70%),
+    linear-gradient(to left, #15596A 0%, #1A6874 38%, #26878E 68%, #45A9AA 100%);
 }
-.hero-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 42% 55%;   /* מאוזן: גם הראשים וגם החיבוק */
-  z-index: -2;
-  /* מסתיר פס כהה דק בראש התמונה הנוכחית (צילום מסך). אפשר למחוק כשתהיה תמונה מקורית */
-  transform: scale(1.05);
-  transform-origin: 50% 100%;
-}
-.hero-overlay {
+/* קווי זהב מעוגלים בפינות */
+.hero::before {
+  content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* כהה מימין (שם הטקסט) ושקוף משמאל (שם ריטה וניסים) */
-  background: linear-gradient(to left,
-    rgba(38, 25, 17, 0.86) 0%,
-    rgba(38, 25, 17, 0.62) 30%,
-    rgba(38, 25, 17, 0.10) 58%,
-    rgba(38, 25, 17, 0) 75%);
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23D9B06A' stroke-linecap='round'%3E%3Cpath d='M0 40 C 90 10, 160 0, 230 0' stroke-width='2.2' opacity='.85'/%3E%3Cpath d='M0 62 C 70 30, 130 14, 190 8' stroke-width='1' opacity='.5'/%3E%3Cpath d='M150 300 C 260 290, 340 250, 400 170' stroke-width='2.4' opacity='.85'/%3E%3Cpath d='M190 300 C 290 286, 360 240, 400 205' stroke-width='1' opacity='.5'/%3E%3C/g%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+/* גל רך בתחתית הבאנר, אל הרקע הבהיר של הסקשן הבא */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: var(--wave-h);
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23E8F3F1' opacity='.5' d='M0 0H1440V72C1190 128 900 34 640 80C390 124 170 58 0 100Z'/%3E%3Cpath fill='%23E8F3F1' d='M0 0H1440V40C1200 96 910 6 650 46C410 84 190 22 0 66Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  transform: scaleY(-1);
 }
 .hero-content {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--cream);
-  padding-block: 64px;
-  /* במחשב: הטקסט קרוב יותר לקצה הימני של התמונה */
-  max-width: none;
-  padding-inline: clamp(24px, 5vw, 80px);
+  padding: 40px clamp(20px, 2.5vw, 40px);
+  padding-bottom: calc(32px + var(--wave-h));   /* הטקסט והפעמון מעל הגל */
 }
-.hero-content > * { max-width: 34rem; }
+.hero-media {
+  grid-column: 3;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;        /* התמונה "יושבת" על התחתית */
+  padding-top: 14px;
+}
+/* התמונה המלאה, בלי חיתוך: גדולה ככל שמתאפשר בגובה הבאנר.
+   הקצוות שבהם הבגדים נגמרים נמוגים לתוך הטורקיז */
+.hero-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: min(700px, 50vw);
+  -webkit-mask-image:
+    linear-gradient(to left, transparent 0, #000 12%),
+    linear-gradient(to right, transparent 0, #000 6%),
+    linear-gradient(to top, transparent 0, #000 12%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to left, transparent 0, #000 12%),
+    linear-gradient(to right, transparent 0, #000 6%),
+    linear-gradient(to top, transparent 0, #000 12%);
+  mask-composite: intersect;
+}
 
 /* גוש הטקסט בבאנר: ממורכז, עם קישוטים בזהב */
 .hero-text {
@@ -253,7 +285,23 @@ p { margin: 0 0 1em; }
     radial-gradient(circle at 8% 12%, rgba(31, 110, 120, 0.07), transparent 38%),
     radial-gradient(circle at 92% 88%, rgba(176, 46, 99, 0.06), transparent 40%),
     var(--surface);
+  position: relative;
 }
+/* מעבר גלי ורך בין הרקע הבהיר לטורקיז, למעלה ולמטה:
+   גל אטום בצבע הרקע הבהיר ומאחוריו גל שקוף למחצה */
+.section-alt::before,
+.section-alt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(44px, 6.5vw, 100px);
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23E8F3F1' opacity='.5' d='M0 0H1440V72C1190 128 900 34 640 80C390 124 170 58 0 100Z'/%3E%3Cpath fill='%23E8F3F1' d='M0 0H1440V40C1200 96 910 6 650 46C410 84 190 22 0 66Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.section-alt::before { top: -1px; }
+.section-alt::after { bottom: -1px; transform: scale(-1, -1); }   /* הפוך, כדי שהגל התחתון לא יהיה זהה לעליון */
+.section-alt > .container { position: relative; z-index: 1; }
 
 .section-head {
   max-width: 40rem;
@@ -328,7 +376,7 @@ p { margin: 0 0 1em; }
 .split-video video {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;      /* ריבוע; הסרטון האנכי נחתך מעט למעלה ולמטה */
+  aspect-ratio: 4 / 5;      /* כמו תמונת הפתיחה, כדי שהמסגרת המוזהבת תיראה במלואה */
   object-fit: cover;
   object-position: 50% 45%;
   border-radius: var(--radius);
@@ -384,15 +432,29 @@ p { margin: 0 0 1em; }
 .card-amber { --card-color: var(--teal); }
 .card-magenta { --card-color: var(--teal); }
 .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(58, 42, 32, 0.12); }
-/* תמונת מוצר בכרטיס: ריבוע על רקע לבן, כל הפריט נראה (בלי חיתוך) */
+/* תמונת מוצר בכרטיס: ריבוע על רקע לבן-תכלת, כל הפריט נראה (בלי חיתוך) */
 .card-media {
   aspect-ratio: 1 / 1;
-  background: #fff;
-  border-bottom: 1px solid var(--line);
+  /* בתחתית הגוון נמוג לצבע של אזור הטקסט, כדי שלא יהיה קו חד */
+  background:
+    linear-gradient(to bottom, rgba(255, 253, 249, 0) 72%, var(--cream) 100%),
+    radial-gradient(circle at 50% 42%, #FFFFFF 0%, #F2F9F8 45%, #DDEFEC 100%);
   padding: 14px;
 }
-.card-media img { width: 100%; height: 100%; object-fit: contain; }
-.card-body { padding: 22px 24px 26px; }
+/* multiply: הרקע הלבן שבתוך קובצי התמונות נבלע בגוון התכלת */
+.card-media img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.card-body { position: relative; padding: 26px 24px 26px; }
+/* במקום קו חד בין התמונה לטקסט: קו זהב דק שמתעמעם לצדדים ולוטוס קטן באמצע */
+.card-body::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 78%;
+  height: 20px;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 20'%3E%3Cdefs%3E%3ClinearGradient id='l' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23C49A4E' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23C49A4E'/%3E%3C/linearGradient%3E%3ClinearGradient id='r' x1='1' x2='0'%3E%3Cstop offset='0' stop-color='%23C49A4E' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23C49A4E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='12.4' width='98' height='1.2' fill='url(%23l)'/%3E%3Crect x='142' y='12.4' width='98' height='1.2' fill='url(%23r)'/%3E%3Cg fill='none' stroke='%23C49A4E' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpath d='M120 2.5C115.5 7 115.5 12.5 120 16C124.5 12.5 124.5 7 120 2.5Z'/%3E%3Cpath d='M118 16C111.5 15 107.5 10.5 106.5 6.5C112 7.5 116.5 11 118 16Z'/%3E%3Cpath d='M122 16C128.5 15 132.5 10.5 133.5 6.5C128 7.5 123.5 11 122 16Z'/%3E%3Cpath d='M109 17.5H131'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
 .card-body h3 { color: var(--card-color); margin-bottom: 0.35em; text-align: center; }
 .card-body p { color: var(--ink-soft); margin: 0; }
 
@@ -413,7 +475,7 @@ p { margin: 0 0 1em; }
 }
 .contact-title-text .contact-intro { margin: 6px 0 0; font-size: 1.1rem; }
 .contact-logo {
-  height: clamp(96px, 9vw, 128px);
+  height: clamp(124px, 12vw, 172px);
   width: auto;
   border-radius: 10px;
   border: 1px solid var(--line);
@@ -531,28 +593,22 @@ p { margin: 0 0 1em; }
    טאבלט ומטה
    ========================================================= */
 @media (max-width: 900px) {
-  /* התמונה למעלה (בלי טקסט על הפנים), הטקסט מתחתיה על רקע כהה */
+  /* התמונה למעלה, הטקסט מתחתיה, הכול על רקע שחור */
   .hero {
-    display: block;
-    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
+  .hero-media { order: -1; width: auto; }
   .hero-img {
-    position: relative;
-    z-index: 0;
-    aspect-ratio: 16 / 10;
-    max-height: 52svh;
-    object-position: 47% 30%;
+    position: static;
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    margin-inline: auto;
   }
-  .hero-overlay { display: none; }
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    margin-top: -72px;
-    padding-block: 64px 44px;
-    background: linear-gradient(to bottom, rgba(38, 25, 17, 0) 0, var(--hero-dark) 72px);
-  }
-  .hero-content > * { max-width: 36rem; }
-  .hero-text { margin-inline: auto; }
+  .hero-content { padding-block: 28px calc(24px + var(--wave-h)); }
 
   .split,
   .contact { grid-template-columns: 1fr; }
@@ -561,6 +617,13 @@ p { margin: 0 0 1em; }
   .split-media { order: 1; }
   .split-media .ph-portrait,
   .split-media img { aspect-ratio: 4 / 3; }
+  /* תמונת הדוכן גבוהה וצרה: בנייד מציגים אותה במלואה, בלי חיתוך, ברוחב מוגבל */
+  #story-2 .split-media img {
+    aspect-ratio: auto;
+    height: auto;
+    max-width: 240px;
+    margin-inline: auto;
+  }
 
   .card-body { padding: 18px 18px 22px; }
 }
@@ -571,7 +634,6 @@ p { margin: 0 0 1em; }
 @media (max-width: 640px) {
   body { font-size: 1.06rem; }
 
-  .hero-img { aspect-ratio: 1 / 1; }
   .hero-lead { font-size: 16px; }
   .hero-lead .sep, .hero-sub .sep { margin-inline: 0.3em; }
 
