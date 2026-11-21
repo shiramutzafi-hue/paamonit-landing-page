@@ -464,7 +464,13 @@ p { margin: 0 0 1em; }
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: clamp(40px, 6vw, 80px);
-  align-items: center;
+  align-items: start;
+}
+/* עמודת הפרטים נמתחת לגובה הטופס: לוגו למעלה, פרטים באמצע, רשתות בקו של כפתור השליחה */
+.contact-details { align-self: stretch; display: flex; flex-direction: column; }
+.contact-details .contact-logo-side { display: block; align-self: flex-start; width: auto; height: clamp(126px, 10.5vw, 160px); margin-bottom: auto; }
+@media (min-width: 901px) {
+  .contact-details .contact-list { margin-block: 20px auto; }
 }
 /* הלוגו מימין לכותרת ולשורת ההסבר, שמיושרות על אותו קו */
 .contact-title-row {
@@ -489,7 +495,6 @@ p { margin: 0 0 1em; }
   font-size: 1.2rem;
   margin-bottom: 8px;
 }
-.contact-details { padding-top: clamp(0px, 6vw, 80px); }
 
 .contact-list {
   list-style: none;
@@ -569,9 +574,9 @@ p { margin: 0 0 1em; }
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-color: #CDB89E;
+  border-color: rgba(31, 110, 120, 0.16);
   border-bottom: 2px solid var(--teal);
-  background: rgba(255, 253, 249, 0.85);
+  background: rgba(255, 255, 255, 0.25);
 }
 .btn-square { border-radius: 4px; min-height: 44px; padding-block: 0.35em; line-height: 1.2; font-size: 1.15rem; margin-top: 18px; }
 .sr-only {
@@ -612,7 +617,6 @@ p { margin: 0 0 1em; }
 
   .split,
   .contact { grid-template-columns: 1fr; }
-  .contact-details { padding-top: 0; }
   /* בנייד: קודם הטקסט ואחריו התמונה או הסרטון */
   .split-media { order: 1; }
   .split-media .ph-portrait,
@@ -652,8 +656,8 @@ p { margin: 0 0 1em; }
   .social-btn { width: 40px; height: 40px; }
   .social-btn .icon { width: 19px; height: 19px; }
   /* בנייד: הלוגו עובר לבין הפרטים לרשתות, והרשתות ממורכזות */
-  .contact-title-row .contact-logo { display: none; }
-  .contact-details .contact-logo-mobile { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 auto 28px; }
+  .contact-details .contact-logo-side { display: none; }
+  .contact-details .contact-logo-mobile { display: block; width: 100%; max-width: 210px; height: auto; margin: 0 auto 28px; }
   .social { width: 100%; text-align: center; }
 
   /* הסיפור האישי בנייד: כתב קטן יותר */
