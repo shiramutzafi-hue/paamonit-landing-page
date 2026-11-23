@@ -468,9 +468,15 @@ p { margin: 0 0 1em; }
   filter: blur(16px) brightness(0.92);
 }
 /* פשרה: התמונה גבוהה יותר מ"שלמה" ונחתכת מעט רק משמאל, כך שהמנורה קרובה יותר למרכז */
-.slide-wide { display: flex; align-items: center; }
-.card-media .slide-photo.slide-wide img { position: relative; height: 88%; object-fit: cover; object-position: 100% 50%; }
+.slide-wide { display: flex; align-items: flex-start; }
+/* ממלאת את כל המסגרת, צמודה לצד ימין שבו המנורה והמדפים */
+.card-media .slide-photo.slide-wide img { position: relative; height: 100%; object-fit: cover; object-position: 100% 50%; }
+.slide-wide .slide-bg { display: none; }
 .card-media .slide-photo img { object-fit: cover; object-position: 50% 0%; mix-blend-mode: normal; }
+/* תמונה שממלאת את המסגרת וממורכזת לרוחב (נחתך רק פס דק בצדדים) */
+.card-media .slide-photo.slide-full img { object-position: 50% 50%; }
+/* הפעמון בצד ימין של התמונה */
+.card-media .slide-photo.slide-right img { object-position: 85% 50%; }
 /* דהייה עדינה בתחתית, כמו בשאר הכרטיסים */
 .card-slider::after {
   content: "";
