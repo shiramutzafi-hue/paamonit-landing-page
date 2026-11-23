@@ -32,7 +32,7 @@
     "alternateName": "Paamonit",
     "description": "פעמוני רוח, גופי תאורה אוריינטליים ותכשיטים בעבודת יד, מחומרים ממוחזרים.",
     "telephone": "+972-52-262-0010",
-    "email": "ritasmadja@gmail.com",
+    "email": "PaamonitRN@gmail.com",
     "areaServed": "אילת",
     "address": { "@type": "PostalAddress", "addressLocality": "אילת", "addressCountry": "IL" },
     "founder": [
@@ -141,7 +141,7 @@
       <div class="container split">
         <div class="split-text">
           <h2>כל פריט יחיד במינו</h2>
-          <p>כל פריט נולד אצלנו מתוך השראה של רגע: חרוז שמצאנו, צבע שתפס את העין או חומר שקיבל חיים חדשים. לכן כל יצירה היא אחת ויחידה.</p>
+          <p>כל פריט מתחיל אצלנו ברגע של השראה: חרוז מיוחד, צבע שתפס את העין או חומר שמצאנו בדרך. משם הוא מקבל צורה משלו, ואין עוד אחד כמוהו.</p>
           <ul class="features">
             <li>
               <span class="feature-icon"><svg class="icon"><use href="#i-hand"/></svg></span>
@@ -197,13 +197,29 @@
           </article>
 
           <article class="card card-magenta">
-            <div class="card-media">
-              <img src="images/cat-jewelry.jpg" width="1291" height="1018" loading="lazy"
-                   alt="סט תכשיטים בעבודת יד: שרשרת עלים מוזהבים עם פנינים ועגילים תואמים">
+            <!-- כמה תמונות בכרטיס: מחליקים בנייד, חיצים במחשב -->
+            <div class="card-media card-slider">
+              <div class="slides" tabindex="0" aria-label="תמונות תכשיטים">
+                <div class="slide">
+                  <img src="images/cat-jewelry.jpg" width="1291" height="1018" loading="lazy"
+                       alt="סט תכשיטים בעבודת יד: שרשרת עלים מוזהבים עם פנינים ועגילים תואמים">
+                </div>
+                <div class="slide slide-photo">
+                  <img src="images/jewelry-model.jpg?v=2" width="900" height="1020" loading="lazy"
+                       alt="אישה עם מטפחת צבעונית ועגילים מוזהבים עם חרוזים בגוון טורקיז">
+                </div>
+              </div>
+              <button class="slide-btn slide-prev" type="button" aria-label="התמונה הקודמת">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+              </button>
+              <button class="slide-btn slide-next" type="button" aria-label="התמונה הבאה">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+              </button>
+              <div class="slide-dots" aria-hidden="true"></div>
             </div>
             <div class="card-body">
               <h3>תכשיטים</h3>
-              <p>מגוון רחב של עגילים, מקלאסיים ועדינים ועד צבעוניים בסגנון אתני, בגדלים שונים. לצדם שרשראות ושרשראות בטן, וכל תכשיט ייחודי במינו.</p>
+              <p>מגוון רחב של עגילים, מקלאסיים ועדינים ועד צבעוניים בסגנון אתני, בגדלים שונים, שבולטים ומשתלבים יפה עם שיער אסוף, מטפחות וכיסויי ראש. לצדם שרשראות ושרשראות בטן, וכל תכשיט ייחודי במינו.</p>
             </div>
           </article>
         </div>
@@ -218,7 +234,7 @@
           <div class="contact-title-row">
             <div class="contact-title-text">
               <h2>צרו קשר</h2>
-              <p class="contact-intro">רוצים לשאול על פריט, לתאם משלוח או להזמין אותנו לאירוע?<br>השאירו פרטים ונחזור אליכם בהקדם.</p>
+              <p class="contact-intro">רוצים לשאול על פריט, לתאם משלוח או להזמין אותנו לאירוע או לפסטיבל שאתם מארגנים?<br>השאירו פרטים ונחזור אליכם בהקדם.</p>
             </div>
           </div>
 
@@ -266,7 +282,7 @@
               <a href="tel:+972522620010"><svg class="icon"><use href="#i-phone"/></svg><span dir="ltr">052-2620010</span></a>
             </li>
             <li class="c-teal">
-              <a href="mailto:ritasmadja@gmail.com"><svg class="icon"><use href="#i-mail"/></svg><span dir="ltr">ritasmadja@gmail.com</span></a>
+              <a href="mailto:PaamonitRN@gmail.com"><svg class="icon"><use href="#i-mail"/></svg><span dir="ltr">PaamonitRN@gmail.com</span></a>
             </li>
             <li class="c-teal">
               <span class="contact-plain"><svg class="icon"><use href="#i-pin"/></svg><span>נשמח לארח אתכם בביתנו באילת בתיאום מראש</span></span>
@@ -292,6 +308,20 @@
     </section>
 
   </main>
+
+  <!-- תמונה מוגדלת: נפתחת בלחיצה על תמונה בכרטיסי המוצרים -->
+  <dialog class="lightbox" aria-label="תמונה מוגדלת">
+    <img class="lb-img" alt="">
+    <button class="lb-close" type="button" aria-label="סגירה">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" type="button" aria-label="התמונה הקודמת">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="lb-btn lb-next" type="button" aria-label="התמונה הבאה">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </dialog>
 
   <script src="js/main.js" defer></script>
 </body>
