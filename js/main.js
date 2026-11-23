@@ -1,17 +1,14 @@
 // פעמונית – סקריפט קטן: הודעת טופס ותמונות מתחלפות בכרטיסים
 
-// כרטיס עם כמה תמונות: חיצים, נקודות, והחלקה (הגלילה עצמה ב-CSS)
+// כרטיס עם כמה תמונות: חיצים והחלקה (הגלילה עצמה ב-CSS)
 document.querySelectorAll('.card-slider').forEach((slider) => {
   const track = slider.querySelector('.slides');
   const slides = [...track.children];
   const prev = slider.querySelector('.slide-prev');
   const next = slider.querySelector('.slide-next');
-  const dotsBox = slider.querySelector('.slide-dots');
-  const dots = slides.map(() => dotsBox.appendChild(document.createElement('span')));
   let current = 0;
 
   const update = () => {
-    dots.forEach((d, i) => d.classList.toggle('on', i === current));
     prev.hidden = current === 0;
     next.hidden = current === slides.length - 1;
   };

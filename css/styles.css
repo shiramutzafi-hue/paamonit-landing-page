@@ -507,19 +507,6 @@ p { margin: 0 0 1em; }
 .slide-btn[hidden] { display: none; }
 /* במסכי מגע אין ריחוף: החיצים מוצגים תמיד */
 @media (hover: none) { .slide-btn { opacity: 0.9; } }
-.slide-dots {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  z-index: 1;
-  display: flex;
-  gap: 7px;
-  transform: translateX(-50%);
-  /* הנקודות מתקדמות משמאל לימין, באותו כיוון כמו החץ "הבאה" */
-  direction: ltr;
-}
-.slide-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(31, 110, 120, 0.3); transition: background-color .2s; }
-.slide-dots span.on { background: var(--teal); }
 
 /* לחיצה על תמונת מוצר פותחת אותה בגדול; סמל הגדלה קטן בפינה רומז על כך */
 .card-media { position: relative; }
