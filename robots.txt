@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paamonit-landing-page.netlify.app/sitemap.xml
