@@ -600,7 +600,13 @@ p { margin: 0 0 1em; }
 .contact-details { align-self: stretch; display: flex; flex-direction: column; }
 .contact-details .contact-logo-side { display: block; align-self: flex-start; width: auto; height: clamp(126px, 10.5vw, 160px); margin-bottom: auto; }
 @media (min-width: 901px) {
-  .contact-details .contact-list { margin-block: 20px auto; }
+  .contact-details .contact-list { margin-block: 10px auto; gap: 8px; }
+  .contact-details .contact-list a,
+  .contact-details .contact-plain { min-height: 40px; }
+  .contact-details .contact-list .icon { width: 40px; height: 40px; padding: 10px; }
+  .social { margin-top: 12px; }
+  .social .social-title { margin-bottom: 8px; }
+  .social-divider { margin-top: 8px; }
 }
 /* הלוגו מימין לכותרת ולשורת ההסבר, שמיושרות על אותו קו */
 .contact-title-row {
@@ -645,7 +651,9 @@ p { margin: 0 0 1em; }
   font-size: 1.15rem;
 }
 .contact-list a:hover { color: var(--teal); }
-.contact-list .icon {
+.contact-list .icon,
+.social .contact-plain .icon {
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   padding: 11px;
@@ -655,21 +663,45 @@ p { margin: 0 0 1em; }
 .c-amber .icon { background: rgba(217, 130, 43, 0.16); color: var(--amber-text); }
 .c-magenta .icon { background: rgba(176, 46, 99, 0.12); color: var(--magenta); }
 
-.social { width: fit-content; }
-.social p { margin: 0 0 12px; font-weight: 700; }
-.social-links { display: flex; justify-content: center; gap: 12px; }
+/* "עקבו אחרינו": ממורכז, כותרת עם קווי תכלת דקים, אייקונים בטבעת תכלת, קו עם פעמון ומשפט מתחת */
+.social { --sky: #7FB9C4; width: 100%; text-align: center; }
+.social .social-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.social .social-title::before,
+.social .social-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to var(--fade, left), transparent, var(--sky)); }
+.social .social-title::after { --fade: right; }
+.social-links { display: flex; justify-content: center; gap: 14px; }
+/* קו מפריד עם פעמון קטן באמצע */
+.social-divider { display: flex; align-items: center; gap: 12px; margin: 12px 0 2px; color: #5AA3B0; }
+.social-divider::before,
+.social-divider::after { content: ""; flex: 1; height: 1px; background: var(--sky); }
+.social-divider svg { width: 24px; height: 24px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.social .social-note {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: balance;
+}
 .social-btn {
   display: grid;
   place-items: center;
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid var(--line);
+  border: 2px solid var(--sky);
   color: var(--teal);
   background: var(--cream);
   transition: background-color .2s, color .2s, border-color .2s;
 }
-.social-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+.social-btn:hover { background: var(--teal); border-color: var(--sky); color: #fff; }
 .social-btn .icon { width: 22px; height: 22px; }
 
 /* טופס בסגנון שורות עם קו תחתון */
@@ -784,14 +816,16 @@ p { margin: 0 0 1em; }
   .contact-list { gap: 8px; margin-bottom: 28px; }
   .contact-list a,
   .contact-plain { font-size: 1rem; gap: 10px; min-height: 40px; }
-  .contact-list .icon { width: 36px; height: 36px; padding: 9px; }
-  .social p { font-size: 0.95rem; }
+  .contact-list .icon,
+  .social .contact-plain .icon { width: 36px; height: 36px; padding: 9px; }
+  .social .social-title { font-size: 1rem; }
+  .social .social-note { font-size: 0.85rem; }
   .social-btn { width: 40px; height: 40px; }
   .social-btn .icon { width: 19px; height: 19px; }
   /* בנייד: הלוגו עובר לבין הפרטים לרשתות, והרשתות ממורכזות */
   .contact-details .contact-logo-side { display: none; }
   .contact-details .contact-logo-mobile { display: block; width: 100%; max-width: 210px; height: auto; margin: 0 auto 28px; }
-  .social { width: 100%; text-align: center; }
+  .social { width: 100%; }
 
   /* הסיפור האישי בנייד: כתב קטן יותר */
   #story .split-text p,
