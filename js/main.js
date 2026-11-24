@@ -73,17 +73,40 @@ if (lb && lb.showModal) {
   });
 }
 
-// עד שהטופס יחובר (data-ready="true" ב-index.html) מציגים הודעה במקום לשלוח
+// טופס יצירת קשר: נשלח ל-Netlify Forms ברקע, וההודעה מופיעה באותו מקום בעמוד
+// (אם data-ready="false" ב-index.html, מציגים הודעה במקום לשלוח)
 const form = document.getElementById('contact-form');
 
 if (form) {
+  const status = form.querySelector('.form-status');
+  const button = form.querySelector('button[type="submit"]');
+  const say = (text, ok) => {
+    if (!status) return;
+    status.textContent = text;
+    status.classList.toggle('ok', !!ok);
+  };
+
   form.addEventListener('submit', (e) => {
+    e.preventDefault();
     if (form.dataset.ready !== 'true') {
-      e.preventDefault();
-      const status = form.querySelector('.form-status');
-      if (status) {
-        status.textContent = 'הטופס עדיין לא מחובר. בינתיים אפשר לכתוב לנו בוואטסאפ או להתקשר.';
-      }
+      say('הטופס עדיין לא מחובר. בינתיים אפשר לכתוב לנו בוואטסאפ או להתקשר.');
+      return;
     }
+    if (button) button.disabled = true;
+    say('שולחים...');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        say('תודה! קיבלנו את הפנייה ונחזור אליכם בהקדם.', true);
+      })
+      .catch(() => {
+        say('משהו השתבש בשליחה. אפשר לכתוב לנו בוואטסאפ או להתקשר.');
+      })
+      .finally(() => { if (button) button.disabled = false; });
   });
 }

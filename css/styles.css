@@ -754,6 +754,7 @@ p { margin: 0 0 1em; }
 }
 .hidden-field { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .form-status { margin: 10px 0 0; font-weight: 600; color: var(--magenta); text-align: center; }
+.form-status.ok { color: var(--teal); }
 .form-status:empty { display: none; }
 
 /* =========================================================
